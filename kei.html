@@ -1,0 +1,117 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine's Day Invitation</title>
+    <style>
+        body {
+            background-color: pink;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .envelope {
+            width: 200px;
+            height: 150px;
+            background-color: #ff69b4;
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.3s ease-in-out;
+        }
+        .envelope:hover {
+            transform: scale(1.05);
+        }
+        .envelope::before, .envelope::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-style: solid;
+        }
+        .envelope::before {
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            border-width: 0 100px 75px 100px;
+            border-color: transparent transparent #ff69b4 transparent;
+        }
+        .envelope::after {
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            border-width: 75px 100px 0 100px;
+            border-color: #ff69b4 transparent transparent transparent;
+        }
+        .letter {
+            display: none;
+            width: 100%;
+            height: 100%;
+            background-color: white;
+            padding: 20px;
+            box-sizing: border-box;
+            position: absolute;
+            top: 0;
+            left: 0;
+            text-align: center;
+        }
+        .letter p {
+            margin: 10px 0;
+        }
+        .buttons {
+            margin-top: 20px;
+        }
+        .btn {
+            padding: 10px 20px;
+            margin: 5px;
+            cursor: pointer;
+            background-color: lightgray;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .btn:hover {
+            background-color: gray;
+        }
+    </style>
+</head>
+<body>
+    <div class="envelope" id="envelope">
+        <div class="letter" id="letter">
+            <p>For My Girlfriend Kerin Salma Ramadhani,</p>
+            <p>aku pengen ngajak kamu ke suatu tempat yang bagus banget besok 14 Februari 2025, kita bisa seneng-seneng dan bucin sepuasnya. It's been long time kita ga ketemu, I miss youu bubbb 💋.</p>
+            <div class="buttons">
+                <button class="btn" id="yes-btn">Yes</button>
+                <button class="btn" id="no-btn">No</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const envelope = document.getElementById('envelope');
+        const letter = document.getElementById('letter');
+        const yesBtn = document.getElementById('yes-btn');
+        const noBtn = document.getElementById('no-btn');
+
+        envelope.addEventListener('click', () => {
+            envelope.style.display = 'none';
+            letter.style.display = 'block';
+        });
+
+        yesBtn.addEventListener('click', () => {
+            letter.innerHTML = '<p>For My Girlfriend Kerin Salma Ramadhani,</p><p>aku jemput jam 2 siang ilyyyy 💖</p>';
+        });
+
+        noBtn.addEventListener('mouseover', () => {
+            const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+            const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+            noBtn.style.position = 'absolute';
+            noBtn.style.left = `${x}px`;
+            noBtn.style.top = `${y}px`;
+        });
+    </script>
+</body>
+</html>
